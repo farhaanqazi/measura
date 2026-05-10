@@ -1,0 +1,114 @@
+@import "tailwindcss";
+@import "maplibre-gl/dist/maplibre-gl.css";
+@import "../styles/tokens.css";
+
+/* ── Tailwind v4 theme bridge ────────────────────────────────────────
+ * Map our semantic tokens into Tailwind's @theme so utilities like
+ * `bg-background`, `text-foreground`, `bg-accent`, `bg-primary`, etc.
+ * work natively. Glass surfaces use arbitrary values for opacity:
+ * `bg-[hsl(var(--surface-glass)/0.55)]`.
+ */
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-strong: hsl(var(--accent-strong));
+  --color-success: hsl(var(--success));
+  --color-warning: hsl(var(--warning));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border) / 0.10);
+  --color-input: hsl(var(--input) / 0.10);
+  --color-ring: hsl(var(--ring));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+
+  --shadow-glass-sm: var(--shadow-glass-sm);
+  --shadow-glass-md: var(--shadow-glass-md);
+  --shadow-glass-lg: var(--shadow-glass-lg);
+}
+
+/* ── Base layer ──────────────────────────────────────────────────── */
+@layer base {
+  * {
+    border-color: hsl(var(--border-glass) / 0.08);
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Tabular figures for measurement readouts */
+  [data-tabular] {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Respect reduced motion (a11y) */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* MapLibre canvas: let it own its container; just align fonts */
+  .maplibregl-map {
+    font-family: var(--font-sans);
+    width: 100%;
+    height: 100%;
+  }
+  .maplibregl-canvas-container,
+  .maplibregl-canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* Hide MapLibre's default attribution control until we restyle it */
+  .maplibregl-ctrl-attrib.maplibregl-compact {
+    background: hsl(var(--surface-glass-strong) / 0.7);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius-full);
+  }
+
+  .maplibregl-ctrl-attrib a {
+    color: hsl(var(--muted-foreground));
+  }
+}

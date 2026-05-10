@@ -1,0 +1,142 @@
+/*
+ * Three-layer design token architecture
+ * Primitive  →  Semantic  →  Component
+ *
+ * Default theme: Sleek Pro (deep slate + electric cyan).
+ * Theme switching swaps the [data-theme] selector below.
+ *
+ * All values use HSL space-separated channels so Tailwind utilities
+ * can apply opacity via `bg-[hsl(var(--surface-glass)/0.55)]`.
+ */
+
+:root,
+[data-theme="sleek-pro"] {
+  /* ── PRIMITIVE: raw values ─────────────────────────────────────── */
+  --neutral-0: 0 0% 100%;
+  --neutral-50: 222 24% 96%;
+  --neutral-100: 222 20% 90%;
+  --neutral-200: 222 18% 80%;
+  --neutral-300: 222 16% 65%;
+  --neutral-400: 222 14% 50%;
+  --neutral-500: 222 16% 35%;
+  --neutral-600: 222 22% 22%;
+  --neutral-700: 222 30% 14%;
+  --neutral-800: 222 36% 9%;
+  --neutral-900: 222 42% 6%;
+  --neutral-950: 222 47% 4%;
+
+  --cyan-300: 187 95% 70%;
+  --cyan-400: 187 92% 58%;
+  --cyan-500: 188 95% 48%;
+  --cyan-600: 191 93% 38%;
+  --cyan-700: 193 87% 30%;
+
+  --amber-400: 35 92% 60%;
+  --rose-500: 346 84% 58%;
+  --emerald-500: 158 70% 45%;
+
+  /* ── SEMANTIC: purpose-named ───────────────────────────────────── */
+  --background: var(--neutral-950);
+  --foreground: var(--neutral-50);
+  --muted: var(--neutral-700);
+  --muted-foreground: var(--neutral-300);
+
+  --accent: var(--cyan-400);
+  --accent-foreground: var(--neutral-950);
+  --accent-strong: var(--cyan-500);
+
+  --success: var(--emerald-500);
+  --warning: var(--amber-400);
+  --destructive: var(--rose-500);
+  --destructive-foreground: var(--neutral-50);
+
+  /* Glass surfaces: opacity expressed via slash in components */
+  --surface-glass: var(--neutral-800);
+  --surface-glass-strong: var(--neutral-900);
+  --surface-glass-thin: var(--neutral-700);
+
+  --border-glass: 0 0% 100%; /* used at /0.08 */
+  --ring-glass: 0 0% 100%;   /* used at /0.14 */
+  --ring-accent: var(--cyan-400);
+
+  /* ── COMPONENT: specific use-sites ─────────────────────────────── */
+  --map-toolbar-bg: var(--surface-glass);
+  --map-toolbar-fg: var(--foreground);
+  --measurement-pill-bg: var(--surface-glass-thin);
+  --measurement-pill-fg: var(--foreground);
+  --search-palette-bg: var(--surface-glass-strong);
+
+  /* Radii */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+  --radius: var(--radius-md); /* shadcn alias */
+
+  /* Shadows */
+  --shadow-glass-sm: 0 4px 16px -4px rgb(0 0 0 / 0.35);
+  --shadow-glass-md: 0 8px 32px -8px rgb(0 0 0 / 0.45);
+  --shadow-glass-lg: 0 24px 64px -12px rgb(0 0 0 / 0.55);
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-base: 220ms;
+  --duration-slow: 320ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── shadcn/ui compatibility aliases ───────────────────────────── */
+  --card: var(--surface-glass);
+  --card-foreground: var(--foreground);
+  --popover: var(--surface-glass-strong);
+  --popover-foreground: var(--foreground);
+  --primary: var(--accent);
+  --primary-foreground: var(--accent-foreground);
+  --secondary: var(--neutral-700);
+  --secondary-foreground: var(--foreground);
+  --border: var(--border-glass);
+  --input: var(--border-glass);
+  --ring: var(--ring-accent);
+
+  /* Charts (placeholder — refine when we add data viz) */
+  --chart-1: var(--cyan-400);
+  --chart-2: var(--emerald-500);
+  --chart-3: var(--amber-400);
+  --chart-4: var(--rose-500);
+  --chart-5: 270 80% 65%;
+}
+
+/* Future themes attach via [data-theme="editorial-lux"] etc. */
+[data-theme="editorial-lux"] {
+  --background: 232 30% 8%;
+  --accent: 35 92% 60%;
+  --accent-strong: 32 95% 52%;
+  --accent-foreground: 232 30% 6%;
+  --ring-accent: 35 92% 60%;
+  --primary: var(--accent);
+  --primary-foreground: var(--accent-foreground);
+  --ring: var(--ring-accent);
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 1.75rem;
+  --radius: var(--radius-lg);
+}
+
+[data-theme="high-contrast-field"] {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --accent: 187 100% 60%;
+  --accent-strong: 187 100% 50%;
+  --accent-foreground: 0 0% 0%;
+  --ring-accent: 187 100% 60%;
+  --primary: var(--accent);
+  --primary-foreground: var(--accent-foreground);
+  --ring: var(--ring-accent);
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius: var(--radius-md);
+}

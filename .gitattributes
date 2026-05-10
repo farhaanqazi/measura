@@ -1,0 +1,35 @@
+# Normalize line endings — LF in the repo, native checkout per platform.
+# Prevents the classic "whole file changed" diffs when teammates use
+# different OSes (Windows CRLF vs macOS/Linux LF).
+* text=auto eol=lf
+
+# Shell scripts must stay LF even on Windows
+*.sh text eol=lf
+
+# Windows scripts must stay CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Lockfiles — generated, mark as such so GitHub diffs collapse them
+pnpm-lock.yaml -diff linguist-generated
+package-lock.json -diff linguist-generated
+yarn.lock -diff linguist-generated
+
+# Binary assets — never try to text-merge
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.svg text
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.tar binary

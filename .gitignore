@@ -1,0 +1,101 @@
+# =====================================================
+# Measura — root .gitignore
+# =====================================================
+
+# ── Project-specific ─────────────────────────────────
+# In-repo design intelligence skill + scratch / handoff dirs.
+# Big and not part of the runtime — keep out of git.
+_local/
+
+# Bogus directory shadcn CLI sometimes creates outside the web/ workspace.
+next-app/
+
+# ── Dependencies ─────────────────────────────────────
+node_modules/
+**/node_modules/
+.pnp
+.pnp.*
+.yarn/cache
+.yarn/install-state.gz
+.yarn/build-state.json
+.yarn/error-log
+
+# ── Build outputs ────────────────────────────────────
+**/.next/
+**/.turbo/
+**/out/
+**/dist/
+**/build/
+**/.vercel/
+**/storybook-static/
+**/coverage/
+**/.nyc_output/
+
+# ── TypeScript ───────────────────────────────────────
+**/*.tsbuildinfo
+**/next-env.d.ts
+
+# ── Logs ─────────────────────────────────────────────
+*.log
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/pnpm-debug.log*
+**/lerna-debug.log*
+
+# ── Env / secrets ────────────────────────────────────
+.env
+.env.local
+.env.*.local
+**/.env
+**/.env.local
+**/.env.*.local
+# Allow the example template — required reading for newcomers
+!**/.env.example
+
+# ── Editors / IDEs ───────────────────────────────────
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.cursor/
+.qwen/
+.qwen-code/
+.fleet/
+.zed/
+*.swp
+*.swo
+*.swn
+*~
+
+# ── Claude Code / agent artifacts ───────────────────
+# User-specific harness state (permission overrides, transcripts, etc.)
+.claude/
+.superpowers/
+.ai-context/
+.playwright-mcp/
+
+# ── OS clutter ───────────────────────────────────────
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+.AppleDouble
+.LSOverride
+Icon?
+
+# ── Misc tooling ─────────────────────────────────────
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+*.pem
+*.tgz
+
+# ── Supabase local state ─────────────────────────────
+**/supabase/.branches
+**/supabase/.temp
+**/supabase/.env

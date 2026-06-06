@@ -8,7 +8,10 @@ import type {
   Polygon,
   MultiPolygon,
 } from "geojson";
+import osmtogeojson from "osmtogeojson";
+import { area as turfArea, booleanPointInPolygon } from "@turf/turf";
 import { polygonStats } from "@/lib/geo/measurements";
+import { logMeasurement, geomSummary } from "@/lib/devlog";
 import { useMap } from "@/features/map/MapContext";
 import { useMapUI, type SelectedBuilding } from "@/features/map/store";
 
@@ -16,28 +19,16 @@ const SOURCE_ID = "selected-building";
 const LAYER_FILL = "selected-building-fill";
 const LAYER_OUTLINE = "selected-building-outline";
 
-interface OverpassNode {
-  lat: number;
-  lon: number;
-}
-interface OverpassWay {
-  type: "way";
-  id: number;
-  geometry?: OverpassNode[];
-  tags?: Record<string, string>;
-}
-interface OverpassRelation {
-  type: "relation";
-  id: number;
-  members?: { type: string; ref: number; role: string; geometry?: OverpassNode[] }[];
-  tags?: Record<string, string>;
-}
-type OverpassElement = OverpassWay | OverpassRelation;
+type BuildingFeature = Feature<
+  Polygon | MultiPolygon,
+  { osm_id?: number; osm_type?: "way" | "relation"; tags: Record<string, string> }
+>;
 
 /**
- * Click anywhere on the map → query Overpass for buildings within 60m → pick
- * the smallest enclosing footprint → render as a glowing polygon and stash
- * its computed measurements in the global store.
+ * Click anywhere on the map → query Overpass for buildings within radius →
+ * convert FAITHFULLY with osmtogeojson (preserves relations, multipolygons,
+ * and inner rings / courtyards) → pick the smallest footprint enclosing the
+ * click → render as a glowing polygon and stash its measurements in the store.
  */
 export function useBuildingDetection() {
   const { map } = useMap();
@@ -86,9 +77,9 @@ export function useBuildingDetection() {
       setDetecting(true);
       try {
         const { lng, lat } = e.lngLat;
-        const r = await fetch(`/api/buildings?lat=${lat}&lng=${lng}&radius=60`);
+        const r = await fetch(`/api/buildings?lat=${lat}&lng=${lng}&radius=80`);
         if (!r.ok) return;
-        const { elements } = (await r.json()) as { elements: OverpassElement[] };
+        const { elements } = (await r.json()) as { elements: unknown[] };
         const feature = pickBestBuilding(elements, lng, lat);
         if (!feature) {
           setSelected(null);
@@ -108,6 +99,19 @@ export function useBuildingDetection() {
         };
         setSelected(enriched);
         setDetailOpen(true);
+        logMeasurement({
+          source: "osm-select",
+          name: feature.properties.tags?.["name"] ?? null,
+          osm_id: feature.properties.osm_id ?? null,
+          osm_type: feature.properties.osm_type ?? null,
+          ...geomSummary(enriched),
+          area_m2: stats.area_m2,
+          perimeter_m: stats.perimeter_m,
+          bbox_width_m: stats.bbox_width_m,
+          bbox_length_m: stats.bbox_length_m,
+          click: [lng, lat],
+          geometry: enriched.geometry,
+        });
         (map.getSource(SOURCE_ID) as maplibregl.GeoJSONSource).setData({
           type: "FeatureCollection",
           features: [enriched],
@@ -127,61 +131,49 @@ export function useBuildingDetection() {
   }, [map, tool, setSelected, setDetecting, setDetailOpen]);
 }
 
-/** Convert Overpass elements to GeoJSON Polygons; pick the smallest one
- * containing the click (so we don't grab the building NEXT door). */
+/**
+ * Convert raw Overpass elements to GeoJSON with osmtogeojson (handles ways,
+ * relations, multipolygons, and inner rings), then pick the smallest footprint
+ * that contains the click — so we grab the building you clicked, not a larger
+ * enclosing complex, and never a neighbour.
+ */
 function pickBestBuilding(
-  elements: OverpassElement[],
+  elements: unknown[],
   lng: number,
   lat: number,
-): Feature<Polygon | MultiPolygon, Record<string, unknown>> | null {
-  const polygons: Feature<Polygon, Record<string, unknown>>[] = [];
+): BuildingFeature | null {
+  const fc = osmtogeojson({ elements } as never) as FeatureCollection;
 
-  for (const el of elements) {
-    if (el.type === "way" && el.geometry && el.geometry.length >= 3) {
-      const ring = el.geometry.map((n) => [n.lon, n.lat] as [number, number]);
-      // Close the ring if needed
-      const first = ring[0]!;
-      const last = ring[ring.length - 1]!;
-      if (first[0] !== last[0] || first[1] !== last[1]) ring.push(first);
-      polygons.push({
-        type: "Feature",
-        properties: { osm_id: el.id, osm_type: "way", tags: el.tags ?? {} },
-        geometry: { type: "Polygon", coordinates: [ring] },
-      });
+  const polys = fc.features.filter(
+    (f): f is Feature<Polygon | MultiPolygon> =>
+      f.geometry != null &&
+      (f.geometry.type === "Polygon" || f.geometry.type === "MultiPolygon"),
+  );
+  if (polys.length === 0) return null;
+
+  // Prefer footprints whose interior contains the click (holes count as
+  // outside, so clicking a courtyard won't select that building). Among those,
+  // the smallest by true geodesic area.
+  const containing = polys.filter((f) => {
+    try {
+      return booleanPointInPolygon([lng, lat], f);
+    } catch {
+      return false;
     }
-    // Note: relation/multipolygon support would parse `members` outers/inners;
-    // skipped for v1 since `way` covers the vast majority of buildings.
-  }
+  });
+  const pool = containing.length > 0 ? containing : polys;
+  pool.sort((a, b) => turfArea(a) - turfArea(b));
 
-  if (polygons.length === 0) return null;
+  const best = pool[0]!;
+  const [osmType, osmId] = String(best.id ?? "/").split("/");
 
-  // Prefer polygons that strictly contain the click point; among those, smallest.
-  const containing = polygons.filter((p) => isPointInRing([lng, lat], p.geometry.coordinates[0]!));
-  const candidates = containing.length > 0 ? containing : polygons;
-  candidates.sort((a, b) => bboxArea(a) - bboxArea(b));
-  return candidates[0]!;
-}
-
-function bboxArea(f: Feature<Polygon, Record<string, unknown>>) {
-  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-  for (const [x, y] of f.geometry.coordinates[0]!) {
-    if (x < minX) minX = x;
-    if (y < minY) minY = y;
-    if (x > maxX) maxX = x;
-    if (y > maxY) maxY = y;
-  }
-  return (maxX - minX) * (maxY - minY);
-}
-
-function isPointInRing([px, py]: [number, number], ring: number[][]) {
-  let inside = false;
-  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-    const [xi, yi] = ring[i]!;
-    const [xj, yj] = ring[j]!;
-    const intersect =
-      yi! > py !== yj! > py &&
-      px < ((xj! - xi!) * (py - yi!)) / (yj! - yi!) + xi!;
-    if (intersect) inside = !inside;
-  }
-  return inside;
+  return {
+    type: "Feature",
+    properties: {
+      osm_id: Number(osmId) || undefined,
+      osm_type: osmType === "relation" ? "relation" : "way",
+      tags: (best.properties as Record<string, string> | null) ?? {},
+    },
+    geometry: best.geometry,
+  };
 }

@@ -10,6 +10,7 @@ import { MeasurementStrip } from "@/features/measurement/MeasurementStrip";
 import { BuildingDetailDrawer } from "@/features/measurement/BuildingDetailDrawer";
 import { ThemeSwitcher } from "@/features/theme/ThemeSwitcher";
 import { useBuildingDetection } from "@/features/measurement/useBuildingDetection";
+import { useMapDrawing } from "@/features/measurement/useMapDrawing";
 
 export function Workspace() {
   return (
@@ -17,6 +18,7 @@ export function Workspace() {
       <MapShell>
         {/* Side effects on map: building click → /api/buildings → polygon overlay */}
         <Listener />
+        <DrawingListener />
 
         {/* Top-left: brand + back */}
         <div className="absolute left-4 top-4 z-10 flex items-center gap-2">
@@ -59,5 +61,10 @@ export function Workspace() {
 
 function Listener() {
   useBuildingDetection();
+  return null;
+}
+
+function DrawingListener() {
+  useMapDrawing();
   return null;
 }

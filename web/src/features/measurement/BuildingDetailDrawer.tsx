@@ -27,7 +27,8 @@ import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { formatArea, formatLength } from "@/lib/geo/measurements";
 import { inferBuildingHeight } from "@/lib/geo/height";
-import { useMapUI } from "@/features/map/store";
+import { useMapUI, type SelectedBuilding, type DrawnFeature } from "@/features/map/store";
+import type { ReversePlace } from "@/app/api/reverse/route";
 import { cn } from "@/lib/utils";
 
 const HIDDEN_TAG_PREFIXES = ["source:", "ref:"];
@@ -36,49 +37,73 @@ export function BuildingDetailDrawer() {
   const open = useMapUI((s) => s.detailOpen);
   const setOpen = useMapUI((s) => s.setDetailOpen);
   const selected = useMapUI((s) => s.selected);
+  const drawnFeature = useMapUI((s) => s.drawnFeature);
+  const tool = useMapUI((s) => s.tool);
   const unit = useMapUI((s) => s.unit);
   const setUnit = useMapUI((s) => s.setUnit);
 
-  const tagGroups = useMemo(() => groupTags(selected?.properties.tags), [selected]);
+  const activeFeature = (tool !== "select" && drawnFeature) ? drawnFeature : selected;
+
+  const tagGroups = useMemo(() => groupTags(activeFeature?.properties?.tags), [activeFeature]);
   const height = useMemo(
-    () => inferBuildingHeight(selected?.properties.tags),
-    [selected],
+    () => inferBuildingHeight(activeFeature?.properties?.tags),
+    [activeFeature],
   );
 
   // Fetch ground elevation for the building's centroid
-  const centroidKey = selected
-    ? `${selected.properties.centroid[0]}-${selected.properties.centroid[1]}`
+  const centroidKey = activeFeature?.properties?.centroid
+    ? `${activeFeature.properties.centroid[0]}-${activeFeature.properties.centroid[1]}`
     : null;
   const { data: elevationData } = useQuery({
     queryKey: ["elevation", centroidKey],
     queryFn: async () => {
-      if (!selected) return null;
-      const [lng, lat] = selected.properties.centroid;
+      if (!activeFeature || !activeFeature.properties.centroid) return null;
+      const [lng, lat] = activeFeature.properties.centroid;
       const r = await fetch(`/api/elevation?lat=${lat}&lng=${lng}`);
       if (!r.ok) return null;
       const j = (await r.json()) as { elevation_m: number | null };
       return j.elevation_m;
     },
-    enabled: Boolean(selected) && open,
+    enabled: Boolean(activeFeature && activeFeature.properties.centroid) && open,
     staleTime: 60 * 60 * 1000, // 1 hour
   });
 
-  if (!selected) return null;
-  const p = selected.properties;
+  // Reverse-geocode the centroid so features without OSM tags (hand-drawn
+  // polygons especially) still get a name / address / postcode.
+  const { data: place } = useQuery({
+    queryKey: ["reverse", centroidKey],
+    queryFn: async () => {
+      if (!activeFeature?.properties?.centroid) return null;
+      const [lng, lat] = activeFeature.properties.centroid;
+      const r = await fetch(`/api/reverse?lat=${lat}&lng=${lng}`);
+      if (!r.ok) return null;
+      return ((await r.json()) as { place: ReversePlace | null }).place;
+    },
+    enabled: Boolean(activeFeature?.properties?.centroid) && open,
+    staleTime: 24 * 60 * 60 * 1000, // 1 day
+  });
+
+  if (!activeFeature) return null;
+  const p = activeFeature.properties as Partial<SelectedBuilding["properties"]> &
+    Partial<NonNullable<DrawnFeature["properties"]>>;
+  const isCustom = tool !== "select" && drawnFeature;
   const name =
-    p.tags?.["name"] ||
-    p.tags?.["addr:housename"] ||
-    p.tags?.["building"] ||
-    "Unnamed building";
+    p?.tags?.["name"] ||
+    p?.tags?.["addr:housename"] ||
+    place?.name ||
+    (isCustom ? "Custom Measurement" : (p?.tags?.["building"] || "Unnamed building"));
+
+  const postcode = p?.tags?.["addr:postcode"] ?? place?.postcode ?? null;
+  const resolvedAddress = addressLine(p?.tags) ?? placeAddress(place);
 
   const osmUrl =
-    p.osm_id && p.osm_type
+    p?.osm_id && p?.osm_type
       ? `https://www.openstreetmap.org/${p.osm_type}/${p.osm_id}`
       : null;
 
   const copyGeoJSON = async () => {
     try {
-      await navigator.clipboard.writeText(JSON.stringify(selected, null, 2));
+      await navigator.clipboard.writeText(JSON.stringify(activeFeature, null, 2));
       toast.success("GeoJSON copied to clipboard");
     } catch {
       toast.error("Could not copy — clipboard blocked");
@@ -86,6 +111,10 @@ export function BuildingDetailDrawer() {
   };
 
   const copyCoords = async () => {
+    if (!p.centroid) {
+      toast.error("No coordinates available");
+      return;
+    }
     const [lng, lat] = p.centroid;
     try {
       await navigator.clipboard.writeText(`${lat.toFixed(7)}, ${lng.toFixed(7)}`);
@@ -110,9 +139,11 @@ export function BuildingDetailDrawer() {
             <div className="min-w-0 flex-1">
               <SheetTitle className="truncate text-base">{name}</SheetTitle>
               <SheetDescription className="text-xs">
-                {p.tags?.["building"] && p.tags?.["building"] !== "yes"
-                  ? `Type: ${p.tags["building"]}`
-                  : "OpenStreetMap building"}
+                {isCustom
+                  ? "Custom measurement"
+                  : p.tags?.["building"] && p.tags?.["building"] !== "yes"
+                    ? `Type: ${p.tags["building"]}`
+                    : "OpenStreetMap building"}
                 {osmUrl && (
                   <>
                     {" · "}
@@ -136,26 +167,41 @@ export function BuildingDetailDrawer() {
             {/* ── Measurements ─────────────────────────────── */}
             <Section title="Measurements" right={<UnitToggle unit={unit} onChange={setUnit} />}>
               <div className="grid grid-cols-2 gap-2">
-                <Stat
-                  icon={<Square className="size-3.5" />}
-                  label="Area"
-                  value={formatArea(p.area_m2, unit)}
-                />
-                <Stat
-                  icon={<Ruler className="size-3.5" />}
-                  label="Perimeter"
-                  value={formatLength(p.perimeter_m, unit)}
-                />
-                <Stat
-                  icon={<Compass className="size-3.5" />}
-                  label="Bbox width"
-                  value={formatLength(p.bbox_width_m, unit)}
-                />
-                <Stat
-                  icon={<Compass className="size-3.5 rotate-90" />}
-                  label="Bbox length"
-                  value={formatLength(p.bbox_length_m, unit)}
-                />
+                {p.area_m2 !== undefined && (
+                  <Stat
+                    icon={<Square className="size-3.5" />}
+                    label="Area"
+                    value={formatArea(p.area_m2, unit)}
+                  />
+                )}
+                {p.perimeter_m !== undefined && (
+                  <Stat
+                    icon={<Ruler className="size-3.5" />}
+                    label="Perimeter"
+                    value={formatLength(p.perimeter_m, unit)}
+                  />
+                )}
+                {p.length_m !== undefined && (
+                  <Stat
+                    icon={<Ruler className="size-3.5" />}
+                    label="Length"
+                    value={formatLength(p.length_m, unit)}
+                  />
+                )}
+                {p.bbox_width_m !== undefined && (
+                  <Stat
+                    icon={<Compass className="size-3.5" />}
+                    label="Bbox width"
+                    value={formatLength(p.bbox_width_m, unit)}
+                  />
+                )}
+                {p.bbox_length_m !== undefined && (
+                  <Stat
+                    icon={<Compass className="size-3.5 rotate-90" />}
+                    label="Bbox length"
+                    value={formatLength(p.bbox_length_m, unit)}
+                  />
+                )}
               </div>
             </Section>
 
@@ -219,27 +265,39 @@ export function BuildingDetailDrawer() {
 
             {/* ── Location ─────────────────────────────────── */}
             <Section title="Location">
-              <button
-                type="button"
-                onClick={copyCoords}
-                className={cn(
-                  "group flex w-full items-center justify-between rounded-[var(--radius-md)]",
-                  "bg-[hsl(var(--surface-glass-thin)/0.4)] px-3 py-2 text-left",
-                  "transition-colors hover:bg-[hsl(var(--surface-glass-thin)/0.6)]",
-                )}
-              >
-                <div className="flex items-center gap-2">
-                  <MapPin className="size-3.5 text-[hsl(var(--muted-foreground))]" />
-                  <span className="font-mono text-xs">
-                    {p.centroid[1].toFixed(6)}, {p.centroid[0].toFixed(6)}
-                  </span>
-                </div>
-                <Copy className="size-3.5 text-[hsl(var(--muted-foreground))] opacity-0 group-hover:opacity-100" />
-              </button>
-
-              {addressLine(p.tags) && (
+              {p.centroid ? (
+                <button
+                  type="button"
+                  onClick={copyCoords}
+                  className={cn(
+                    "group flex w-full items-center justify-between rounded-[var(--radius-md)]",
+                    "bg-[hsl(var(--surface-glass-thin)/0.4)] px-3 py-2 text-left",
+                    "transition-colors hover:bg-[hsl(var(--surface-glass-thin)/0.6)]",
+                  )}
+                >
+                  <div className="flex items-center gap-2">
+                    <MapPin className="size-3.5 text-[hsl(var(--muted-foreground))]" />
+                    <span className="font-mono text-xs">
+                      {p.centroid[1].toFixed(6)}, {p.centroid[0].toFixed(6)}
+                    </span>
+                  </div>
+                  <Copy className="size-3.5 text-[hsl(var(--muted-foreground))] opacity-0 group-hover:opacity-100" />
+                </button>
+              ) : (
                 <div className="rounded-[var(--radius-md)] bg-[hsl(var(--surface-glass-thin)/0.4)] px-3 py-2 text-xs text-[hsl(var(--muted-foreground))]">
-                  {addressLine(p.tags)}
+                  Location coordinates not available
+                </div>
+              )}
+
+              {resolvedAddress && (
+                <div className="rounded-[var(--radius-md)] bg-[hsl(var(--surface-glass-thin)/0.4)] px-3 py-2 text-xs mt-2 text-[hsl(var(--muted-foreground))]">
+                  {resolvedAddress}
+                </div>
+              )}
+              {postcode && (
+                <div className="mt-2 flex items-center justify-between rounded-[var(--radius-md)] bg-[hsl(var(--surface-glass-thin)/0.4)] px-3 py-2 text-xs">
+                  <span className="text-[hsl(var(--muted-foreground))]">Postcode</span>
+                  <span className="font-mono">{postcode}</span>
                 </div>
               )}
             </Section>
@@ -350,6 +408,18 @@ function UnitToggle({
       {unit}
     </button>
   );
+}
+
+function placeAddress(place: ReversePlace | null | undefined) {
+  if (!place) return null;
+  const parts = [
+    [place.housenumber, place.street].filter(Boolean).join(" "),
+    place.city,
+    place.state,
+    place.postcode,
+    place.country,
+  ].filter(Boolean);
+  return parts.length ? parts.join(", ") : null;
 }
 
 function addressLine(tags: Record<string, string | undefined> | undefined) {

@@ -22,6 +22,46 @@ const SearchParamsSchema = z.object({
 export const runtime = "nodejs";
 export const revalidate = 3600; // 1h — building footprints rarely change
 
+// Public Overpass instances are individually flaky (downtime, HTML error
+// pages, rate limits). Cascade through several until one returns valid JSON,
+// rather than depending on a single hardcoded mirror. The env value is tried
+// first so it can be overridden; the rest are known planet-wide fallbacks.
+const MIRRORS = [
+  env.OVERPASS_BASE_URL,
+  "https://overpass-api.de/api/interpreter",
+  "https://overpass.kumi.systems/api/interpreter",
+  "https://overpass.openstreetmap.ru/api/interpreter",
+].filter((v, i, a) => a.indexOf(v) === i);
+
+async function queryOverpass(query: string): Promise<unknown[] | null> {
+  for (const url of MIRRORS) {
+    try {
+      const upstream = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": env.GEOCODER_USER_AGENT,
+        },
+        body: `data=${encodeURIComponent(query)}`,
+        next: { revalidate: 3600 },
+        signal: AbortSignal.timeout(20000),
+      });
+      // Overpass returns 200-with-HTML on overload and 4xx on bad UA — guard
+      // against parsing non-JSON so one bad mirror doesn't crash the request.
+      const contentType = upstream.headers.get("content-type") ?? "";
+      if (!upstream.ok || !contentType.includes("json")) {
+        console.warn(`[buildings] ${url} -> ${upstream.status} ${contentType}`);
+        continue;
+      }
+      const data = (await upstream.json()) as { elements?: unknown[] };
+      return data.elements ?? [];
+    } catch (error) {
+      console.warn(`[buildings] ${url} failed:`, (error as Error).message);
+    }
+  }
+  return null;
+}
+
 export async function GET(request: NextRequest) {
   const parsed = SearchParamsSchema.safeParse(
     Object.fromEntries(request.nextUrl.searchParams),
@@ -35,8 +75,8 @@ export async function GET(request: NextRequest) {
 
   const { lat, lng, radius } = parsed.data;
 
-  // Overpass QL: any way tagged building within `radius` of (lat,lng),
-  // returning geometry inline. `out 30` caps elements to keep payload small.
+  // Overpass QL: any building (way or relation) within `radius` of (lat,lng),
+  // returning geometry inline. `out geom 30` caps elements to keep payload small.
   const query = `
     [out:json][timeout:25];
     (
@@ -46,26 +86,16 @@ export async function GET(request: NextRequest) {
     out geom 30;
   `.trim();
 
-  const upstream = await fetch(env.OVERPASS_BASE_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      "User-Agent": env.GEOCODER_USER_AGENT,
-    },
-    body: `data=${encodeURIComponent(query)}`,
-    next: { revalidate: 3600 },
-  });
-
-  if (!upstream.ok) {
+  const elements = await queryOverpass(query);
+  if (elements === null) {
     return NextResponse.json(
-      { error: "Overpass upstream error", status: upstream.status },
-      { status: 502 },
+      { error: "All Overpass mirrors failed or timed out", elements: [] },
+      { status: 504 },
     );
   }
 
-  const data = (await upstream.json()) as { elements?: unknown[] };
   return NextResponse.json(
-    { elements: data.elements ?? [] },
+    { elements },
     {
       headers: {
         "Cache-Control":

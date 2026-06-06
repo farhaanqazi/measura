@@ -6,7 +6,9 @@ export const env = createEnv({
     GEOCODER_USER_AGENT: z
       .string()
       .min(1)
-      .default("Measura/0.1 (contact@example.com)"),
+      // NB: some Overpass mirrors 406 on placeholder UAs (e.g. example.com).
+      // A real contact URL keeps us inside their etiquette and unblocked.
+      .default("Mozilla/5.0 (compatible; MeasuraBot/0.1; +https://measura.app)"),
     /**
      * Photon (Komoot) is the default geocoder — free, no API key, no IP
      * blocking. Returns GeoJSON FeatureCollection. https://photon.komoot.io
@@ -25,7 +27,7 @@ export const env = createEnv({
     OVERPASS_BASE_URL: z
       .string()
       .url()
-      .default("https://overpass.kumi.systems/api/interpreter"),
+      .default("https://overpass-api.de/api/interpreter"),
     /**
      * Open-Meteo's free elevation API (no key required). Uses Copernicus DEM 90m
      * for global ground-level elevation. https://open-meteo.com/en/docs/elevation-api

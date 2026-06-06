@@ -1,7 +1,7 @@
 "use client";
 
 import { create } from "zustand";
-import type { Feature, Polygon, MultiPolygon } from "geojson";
+import type { Feature, Polygon, MultiPolygon, LineString, Point } from "geojson";
 import type { BaseLayer } from "./styles";
 
 export type ToolMode = "select" | "ruler" | "polygon" | "rectangle";
@@ -18,6 +18,18 @@ export type SelectedBuilding = Feature<Polygon | MultiPolygon, {
   centroid: [number, number];
 }>;
 
+export type DrawnFeature = Feature<Polygon | LineString | Point, {
+  area_m2?: number;
+  perimeter_m?: number;
+  length_m?: number;
+  tags?: Record<string, string | undefined>;
+  centroid?: [number, number];
+  osm_id?: number;
+  osm_type?: "way" | "relation";
+  bbox_width_m?: number;
+  bbox_length_m?: number;
+}>;
+
 interface MapUIState {
   baseLayer: BaseLayer;
   setBaseLayer: (l: BaseLayer) => void;
@@ -30,6 +42,9 @@ interface MapUIState {
 
   selected: SelectedBuilding | null;
   setSelected: (b: SelectedBuilding | null) => void;
+
+  drawnFeature: DrawnFeature | null;
+  setDrawnFeature: (f: DrawnFeature | null) => void;
 
   /** Loading flag for async building lookups. */
   detecting: boolean;
@@ -55,6 +70,9 @@ export const useMapUI = create<MapUIState>((set) => ({
 
   selected: null,
   setSelected: (b) => set({ selected: b }),
+
+  drawnFeature: null,
+  setDrawnFeature: (f) => set({ drawnFeature: f }),
 
   detecting: false,
   setDetecting: (v) => set({ detecting: v }),

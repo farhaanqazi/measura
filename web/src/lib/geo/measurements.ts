@@ -28,9 +28,50 @@ import type {
 
 const M_PER_KM = 1000;
 
+/** Every polygon's ring-set, whether the feature is a Polygon or MultiPolygon. */
+function polygonsOf(feature: Feature<Polygon | MultiPolygon>): Position[][][] {
+  return feature.geometry.type === "Polygon"
+    ? [feature.geometry.coordinates]
+    : feature.geometry.coordinates;
+}
+
+/** Geodesic area (m²) of a single ring; 0 for degenerate rings. */
+function ringAreaM2(ring: Position[]): number {
+  if (ring.length < 4) return 0;
+  return area({ type: "Feature", properties: {}, geometry: { type: "Polygon", coordinates: [ring] } });
+}
+
+/** Geodesic length (m) of a single ring. */
+function ringLengthM(ring: Position[]): number {
+  if (ring.length < 2) return 0;
+  return (
+    length(
+      { type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: ring } },
+      { units: "kilometers" },
+    ) * M_PER_KM
+  );
+}
+
 export function polygonStats(feature: Feature<Polygon | MultiPolygon>) {
-  const area_m2 = area(feature);
-  const perimeter_m = length(feature, { units: "kilometers" }) * M_PER_KM;
+  // Perimeter from OUTER rings only — Turf's length() would otherwise add every
+  // courtyard wall, massively inflating it. Area = outer minus holes; but if the
+  // converted geometry is malformed (holes ≥ outer → an impossible negative
+  // area), fall back to the gross outer area and flag it instead of nonsense.
+  let outerArea = 0;
+  let holeArea = 0;
+  let perimeter_m = 0;
+  for (const poly of polygonsOf(feature)) {
+    const [outer, ...holes] = poly;
+    if (outer) {
+      outerArea += ringAreaM2(outer);
+      perimeter_m += ringLengthM(outer);
+    }
+    for (const hole of holes) holeArea += ringAreaM2(hole);
+  }
+  const net = outerArea - holeArea;
+  const geometry_warning = net <= 0;
+  const area_m2 = geometry_warning ? outerArea : net;
+
   const [minLng, minLat, maxLng, maxLat] = bbox(feature);
   const c = centroid(feature).geometry.coordinates as [number, number];
 
@@ -49,6 +90,7 @@ export function polygonStats(feature: Feature<Polygon | MultiPolygon>) {
   return {
     area_m2,
     perimeter_m,
+    geometry_warning,
     bbox: [minLng, minLat, maxLng, maxLat] as [number, number, number, number],
     bbox_width_m: widthFt * M_PER_KM,
     bbox_length_m: lengthFt * M_PER_KM,

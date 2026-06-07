@@ -1,0 +1,33 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`frozen baseline of current measurements.ts > buckingham baseline 1`] = `
+{
+  "area_m2": 13112,
+  "geometry_warning": false,
+  "perimeter_m": 955,
+}
+`;
+
+exports[`frozen baseline of current measurements.ts > museum baseline 1`] = `
+{
+  "area_m2": 16113,
+  "geometry_warning": false,
+  "perimeter_m": 646,
+}
+`;
+
+exports[`frozen baseline of current measurements.ts > newParliament baseline 1`] = `
+{
+  "area_m2": 22226,
+  "geometry_warning": true,
+  "perimeter_m": 664,
+}
+`;
+
+exports[`frozen baseline of current measurements.ts > oldParliament baseline 1`] = `
+{
+  "area_m2": 18140,
+  "geometry_warning": false,
+  "perimeter_m": 656,
+}
+`;

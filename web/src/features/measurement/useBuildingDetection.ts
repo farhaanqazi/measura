@@ -9,7 +9,7 @@ import type {
   MultiPolygon,
 } from "geojson";
 import osmtogeojson from "osmtogeojson";
-import { area as turfArea, booleanPointInPolygon } from "@turf/turf";
+import { booleanPointInPolygon } from "@turf/turf";
 import { polygonStats } from "@/lib/geo/measurements";
 import { logMeasurement, geomSummary } from "@/lib/devlog";
 import { useMap } from "@/features/map/MapContext";
@@ -32,6 +32,7 @@ type BuildingFeature = Feature<
  */
 export function useBuildingDetection() {
   const { map } = useMap();
+  const selected = useMapUI((s) => s.selected);
   const setSelected = useMapUI((s) => s.setSelected);
   const setDetecting = useMapUI((s) => s.setDetecting);
   const setDetailOpen = useMapUI((s) => s.setDetailOpen);
@@ -66,6 +67,20 @@ export function useBuildingDetection() {
     });
   }, [map]);
 
+  // Keep the highlight layer in sync with `selected` — render it when set and
+  // CLEAR it when null (tool switch, X button, empty result). Without this the
+  // previous building stays highlighted forever, even while drawing another.
+  useEffect(() => {
+    if (!map) return;
+    const src = map.getSource(SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
+    if (!src) return;
+    src.setData(
+      selected
+        ? { type: "FeatureCollection", features: [selected] }
+        : { type: "FeatureCollection", features: [] },
+    );
+  }, [map, selected]);
+
   // Click handler — only active in select mode.
   useEffect(() => {
     if (!map) return;
@@ -83,10 +98,6 @@ export function useBuildingDetection() {
         const feature = pickBestBuilding(elements, lng, lat);
         if (!feature) {
           setSelected(null);
-          (map.getSource(SOURCE_ID) as maplibregl.GeoJSONSource).setData({
-            type: "FeatureCollection",
-            features: [],
-          });
           return;
         }
         const stats = polygonStats(feature);
@@ -111,10 +122,6 @@ export function useBuildingDetection() {
           bbox_length_m: stats.bbox_length_m,
           click: [lng, lat],
           geometry: enriched.geometry,
-        });
-        (map.getSource(SOURCE_ID) as maplibregl.GeoJSONSource).setData({
-          type: "FeatureCollection",
-          features: [enriched],
         });
       } finally {
         if (!cancelled) setDetecting(false);
@@ -162,9 +169,11 @@ function pickBestBuilding(
     }
   });
   const pool = containing.length > 0 ? containing : polys;
-  pool.sort((a, b) => turfArea(a) - turfArea(b));
-
-  const best = pool[0]!;
+  // Rank by robust (hole-aware, never-negative) area so we pick the smallest
+  // real footprint — and never rank a malformed negative-area feature first.
+  const best = pool
+    .map((f) => ({ f, a: polygonStats(f).area_m2 }))
+    .sort((x, y) => x.a - y.a)[0]!.f;
   const [osmType, osmId] = String(best.id ?? "/").split("/");
 
   return {

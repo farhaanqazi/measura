@@ -203,6 +203,12 @@ export function BuildingDetailDrawer() {
                   />
                 )}
               </div>
+              {p.geometry_warning && (
+                <p className="mt-2 text-[11px] leading-snug text-amber-500/90">
+                  ⚠ Source outline looks malformed (overlapping courtyards). Area shown is the
+                  gross outer footprint and may be approximate.
+                </p>
+              )}
             </Section>
 
             <Separator />

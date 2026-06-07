@@ -12,6 +12,7 @@ export type SelectedBuilding = Feature<Polygon | MultiPolygon, {
   tags?: Record<string, string | undefined>;
   area_m2: number;
   perimeter_m: number;
+  geometry_warning?: boolean;
   bbox: [number, number, number, number];
   bbox_width_m: number;
   bbox_length_m: number;
@@ -22,6 +23,7 @@ export type DrawnFeature = Feature<Polygon | LineString | Point, {
   area_m2?: number;
   perimeter_m?: number;
   length_m?: number;
+  geometry_warning?: boolean;
   tags?: Record<string, string | undefined>;
   centroid?: [number, number];
   osm_id?: number;
@@ -63,7 +65,14 @@ export const useMapUI = create<MapUIState>((set) => ({
   setBaseLayer: (l) => set({ baseLayer: l }),
 
   tool: "select",
-  setTool: (t) => set({ tool: t }),
+  // Switching tools starts a clean slate: drop the other tool's selection /
+  // drawing and close the drawer, so auto-detect and hand-draw never coexist.
+  setTool: (t) =>
+    set((s) =>
+      s.tool === t
+        ? { tool: t }
+        : { tool: t, selected: null, drawnFeature: null, detailOpen: false },
+    ),
 
   unit: "metric",
   setUnit: (u) => set({ unit: u }),

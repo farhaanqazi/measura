@@ -13,14 +13,18 @@
  *   4. `roof:levels`         — added on top of `building:levels` when present.
  */
 
+import type { ProvenanceSource } from "../provenance/types";
+
 const M_PER_FT = 0.3048;
 const M_PER_LEVEL = 3.0;
 
 export interface BuildingHeight {
   /** Estimated total height of the building in meters. */
   meters: number;
-  /** How confident we are: "exact" (from tag), "estimated" (from level count). */
-  source: "osm-height" | "osm-levels" | "osm-mixed";
+  /** The provenance source of the height data. */
+  source: ProvenanceSource;
+  /** How the height was inferred. */
+  method: "osm-height" | "osm-levels" | "osm-mixed";
   /** Optional details for the UI. */
   levels?: number;
   rawHeightTag?: string;
@@ -28,6 +32,7 @@ export interface BuildingHeight {
 
 export function inferBuildingHeight(
   tags: Record<string, string | undefined> | undefined,
+  source: ProvenanceSource
 ): BuildingHeight | null {
   if (!tags) return null;
 
@@ -39,7 +44,8 @@ export function inferBuildingHeight(
       const lv = parseInt(tags["building:levels"] ?? "", 10);
       return {
         meters: parsed,
-        source: "osm-height",
+        source,
+        method: "osm-height",
         levels: Number.isFinite(lv) ? lv : undefined,
         rawHeightTag: rawHeight,
       };
@@ -54,7 +60,8 @@ export function inferBuildingHeight(
       buildingLevels + (Number.isFinite(roofLevels) ? roofLevels : 0);
     return {
       meters: totalLevels * M_PER_LEVEL,
-      source: Number.isFinite(roofLevels) ? "osm-mixed" : "osm-levels",
+      source,
+      method: Number.isFinite(roofLevels) ? "osm-mixed" : "osm-levels",
       levels: totalLevels,
     };
   }

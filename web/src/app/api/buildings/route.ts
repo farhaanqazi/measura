@@ -33,7 +33,21 @@ const MIRRORS = [
   "https://overpass.openstreetmap.ru/api/interpreter",
 ].filter((v, i, a) => a.indexOf(v) === i);
 
-async function queryOverpass(query: string): Promise<unknown[] | null> {
+export interface OsmElement {
+  type: "node" | "way" | "relation";
+  id: number;
+  lat?: number;
+  lon?: number;
+  tags?: Record<string, string>;
+  geometry?: { lat: number; lon: number }[];
+  version?: number;
+  timestamp?: string;
+  changeset?: number;
+  uid?: number;
+  user?: string;
+}
+
+async function queryOverpass(query: string): Promise<OsmElement[] | null> {
   for (const url of MIRRORS) {
     try {
       const upstream = await fetch(url, {
@@ -46,14 +60,12 @@ async function queryOverpass(query: string): Promise<unknown[] | null> {
         next: { revalidate: 3600 },
         signal: AbortSignal.timeout(20000),
       });
-      // Overpass returns 200-with-HTML on overload and 4xx on bad UA — guard
-      // against parsing non-JSON so one bad mirror doesn't crash the request.
       const contentType = upstream.headers.get("content-type") ?? "";
       if (!upstream.ok || !contentType.includes("json")) {
         console.warn(`[buildings] ${url} -> ${upstream.status} ${contentType}`);
         continue;
       }
-      const data = (await upstream.json()) as { elements?: unknown[] };
+      const data = (await upstream.json()) as { elements?: OsmElement[] };
       return data.elements ?? [];
     } catch (error) {
       console.warn(`[buildings] ${url} failed:`, (error as Error).message);
@@ -83,7 +95,7 @@ export async function GET(request: NextRequest) {
       way["building"](around:${radius},${lat},${lng});
       relation["building"](around:${radius},${lat},${lng});
     );
-    out geom 30;
+    out geom meta 30;
   `.trim();
 
   const elements = await queryOverpass(query);

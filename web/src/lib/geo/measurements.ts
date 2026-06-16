@@ -17,6 +17,8 @@ import type {
   Point,
   Position,
 } from "geojson";
+import type { ProvenancedValue, ProvenanceSource } from "../provenance/types";
+import { generateProvenanceToken } from "../provenance/token";
 
 /**
  * Pure functions that compute measurement properties from GeoJSON features.
@@ -163,3 +165,40 @@ export function formatArea(squareMeters: number, unit: "metric" | "imperial" = "
 export type GeometryWithStats = Feature<Geometry> & {
   properties: ReturnType<typeof polygonStats> | ReturnType<typeof lineStats>;
 };
+
+export async function toMeasurementRecord(
+  feature: Feature<Polygon | MultiPolygon>,
+  source: ProvenanceSource
+): Promise<{ footprint_m2: ProvenancedValue; perimeter_m: ProvenancedValue }> {
+  const stats = polygonStats(feature);
+  
+  // Method identifier (can be versioned later)
+  const methodArea = "turf.area@1";
+  const methodPerimeter = "turf.length@1";
+
+  const areaToken = await generateProvenanceToken(methodArea, [], source.fingerprint);
+  const perimToken = await generateProvenanceToken(methodPerimeter, [], source.fingerprint);
+
+  return {
+    footprint_m2: {
+      value: stats.area_m2,
+      unit: "m2",
+      tier: "measured",
+      method: methodArea,
+      inputs: [],
+      token: areaToken,
+      confidence: stats.geometry_warning ? 0.5 : 0.9, 
+      source,
+    },
+    perimeter_m: {
+      value: stats.perimeter_m,
+      unit: "m",
+      tier: "measured",
+      method: methodPerimeter,
+      inputs: [],
+      token: perimToken,
+      confidence: stats.geometry_warning ? 0.5 : 0.9,
+      source,
+    }
+  };
+}

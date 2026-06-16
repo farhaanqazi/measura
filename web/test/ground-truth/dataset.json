@@ -1,0 +1,3198 @@
+[
+  {
+    "name": "Burj Khalifa",
+    "location": "Dubai, United Arab Emirates",
+    "floors": 163,
+    "total_area_sqm": 309473,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              55.2741,
+              25.197
+            ],
+            [
+              55.2747,
+              25.197
+            ],
+            [
+              55.2747,
+              25.1974
+            ],
+            [
+              55.2741,
+              25.1974
+            ],
+            [
+              55.2741,
+              25.197
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH) Skyscraper Center"
+  },
+  {
+    "name": "Shanghai Tower",
+    "location": "Shanghai, China",
+    "floors": 128,
+    "total_area_sqm": 380000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.501,
+              31.2332
+            ],
+            [
+              121.5018,
+              31.2332
+            ],
+            [
+              121.5018,
+              31.2339
+            ],
+            [
+              121.501,
+              31.2339
+            ],
+            [
+              121.501,
+              31.2332
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "CTBUH Skyscraper Center / Gensler Architecture Records"
+  },
+  {
+    "name": "Abraj Al-Bait Clock Tower",
+    "location": "Mecca, Saudi Arabia",
+    "floors": 120,
+    "total_area_sqm": 1575815,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              39.8257,
+              21.4177
+            ],
+            [
+              39.8265,
+              21.4177
+            ],
+            [
+              39.8265,
+              21.4185
+            ],
+            [
+              39.8257,
+              21.4185
+            ],
+            [
+              39.8257,
+              21.4177
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Dar Al-Handasah Project Specifications"
+  },
+  {
+    "name": "Ping An Finance Centre",
+    "location": "Shenzhen, China",
+    "floors": 115,
+    "total_area_sqm": 385918,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              114.0551,
+              22.5331
+            ],
+            [
+              114.0559,
+              22.5331
+            ],
+            [
+              114.0559,
+              22.5339
+            ],
+            [
+              114.0551,
+              22.5339
+            ],
+            [
+              114.0551,
+              22.5331
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Kohn Pedersen Fox (KPF) Architects Portfolio"
+  },
+  {
+    "name": "Lotte World Tower",
+    "location": "Seoul, South Korea",
+    "floors": 123,
+    "total_area_sqm": 304081,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              127.1021,
+              37.5126
+            ],
+            [
+              127.1029,
+              37.5126
+            ],
+            [
+              127.1029,
+              37.5133
+            ],
+            [
+              127.1021,
+              37.5133
+            ],
+            [
+              127.1021,
+              37.5126
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Lotte Property & Development Official Records"
+  },
+  {
+    "name": "One World Trade Center",
+    "location": "New York City, USA",
+    "floors": 94,
+    "total_area_sqm": 325279,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -74.0139,
+              40.7126
+            ],
+            [
+              -74.0131,
+              40.7126
+            ],
+            [
+              -74.0131,
+              40.7132
+            ],
+            [
+              -74.0139,
+              40.7132
+            ],
+            [
+              -74.0139,
+              40.7126
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Port Authority of New York and New Jersey Lease Documents"
+  },
+  {
+    "name": "Guangzhou CTF Finance Centre",
+    "location": "Guangzhou, China",
+    "floors": 111,
+    "total_area_sqm": 398000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              113.3218,
+              23.1164
+            ],
+            [
+              113.3226,
+              23.1164
+            ],
+            [
+              113.3226,
+              23.1171
+            ],
+            [
+              113.3218,
+              23.1171
+            ],
+            [
+              113.3218,
+              23.1164
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "CTBUH Skyscraper Center Data"
+  },
+  {
+    "name": "Tianjin CTF Finance Centre",
+    "location": "Tianjin, China",
+    "floors": 97,
+    "total_area_sqm": 252144,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              117.6831,
+              39.0264
+            ],
+            [
+              117.6839,
+              39.0264
+            ],
+            [
+              117.6839,
+              39.0271
+            ],
+            [
+              117.6831,
+              39.0271
+            ],
+            [
+              117.6831,
+              39.0264
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Skidmore, Owings & Merrill (SOM) Project Archives"
+  },
+  {
+    "name": "CITIC Tower (China Zun)",
+    "location": "Beijing, China",
+    "floors": 109,
+    "total_area_sqm": 437000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.4593,
+              39.9142
+            ],
+            [
+              116.4601,
+              39.9142
+            ],
+            [
+              116.4601,
+              39.9149
+            ],
+            [
+              116.4593,
+              39.9149
+            ],
+            [
+              116.4593,
+              39.9142
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "TFP Farrells Architectural Records"
+  },
+  {
+    "name": "TAIPEI 101",
+    "location": "Taipei, Taiwan",
+    "floors": 101,
+    "total_area_sqm": 374220,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.5641,
+              25.0336
+            ],
+            [
+              121.5649,
+              25.0336
+            ],
+            [
+              121.5649,
+              25.0343
+            ],
+            [
+              121.5641,
+              25.0343
+            ],
+            [
+              121.5641,
+              25.0336
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Taipei Financial Center Corporation Financial Statements"
+  },
+  {
+    "name": "Shanghai World Financial Center",
+    "location": "Shanghai, China",
+    "floors": 101,
+    "total_area_sqm": 381600,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.5039,
+              31.2341
+            ],
+            [
+              121.5047,
+              31.2341
+            ],
+            [
+              121.5047,
+              31.2348
+            ],
+            [
+              121.5039,
+              31.2348
+            ],
+            [
+              121.5039,
+              31.2341
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Mori Building Co. Corporate Data"
+  },
+  {
+    "name": "International Commerce Centre",
+    "location": "Hong Kong",
+    "floors": 108,
+    "total_area_sqm": 274064,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              114.1597,
+              22.3031
+            ],
+            [
+              114.1604,
+              22.3031
+            ],
+            [
+              114.1604,
+              22.3038
+            ],
+            [
+              114.1597,
+              22.3038
+            ],
+            [
+              114.1597,
+              22.3031
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Sun Hung Kai Properties Project Profile"
+  },
+  {
+    "name": "Central Park Tower",
+    "location": "New York City, USA",
+    "floors": 98,
+    "total_area_sqm": 119500,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.9813,
+              40.7663
+            ],
+            [
+              -73.9806,
+              40.7663
+            ],
+            [
+              -73.9806,
+              40.7668
+            ],
+            [
+              -73.9813,
+              40.7668
+            ],
+            [
+              -73.9813,
+              40.7663
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "NYC Department of Buildings Filing Records"
+  },
+  {
+    "name": "Lakhta Center",
+    "location": "St. Petersburg, Russia",
+    "floors": 87,
+    "total_area_sqm": 400000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              30.177,
+              59.9868
+            ],
+            [
+              30.1785,
+              59.9868
+            ],
+            [
+              30.1785,
+              59.9875
+            ],
+            [
+              30.177,
+              59.9875
+            ],
+            [
+              30.177,
+              59.9868
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Gazprom Landmark Development Specifications"
+  },
+  {
+    "name": "Landmark 81",
+    "location": "Ho Chi Minh City, Vietnam",
+    "floors": 81,
+    "total_area_sqm": 241000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              106.7214,
+              10.7946
+            ],
+            [
+              106.7222,
+              10.7946
+            ],
+            [
+              106.7222,
+              10.7953
+            ],
+            [
+              106.7214,
+              10.7953
+            ],
+            [
+              106.7214,
+              10.7946
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Vingroup Investor Relations Report"
+  },
+  {
+    "name": "Willis Tower",
+    "location": "Chicago, USA",
+    "floors": 108,
+    "total_area_sqm": 416000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -87.6364,
+              41.8786
+            ],
+            [
+              -87.6355,
+              41.8786
+            ],
+            [
+              -87.6355,
+              41.8791
+            ],
+            [
+              -87.6364,
+              41.8791
+            ],
+            [
+              -87.6364,
+              41.8786
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Blackstone Real Estate Portfolio Disclosures"
+  },
+  {
+    "name": "Petronas Twin Tower 1",
+    "location": "Kuala Lumpur, Malaysia",
+    "floors": 88,
+    "total_area_sqm": 197500,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              101.7112,
+              3.1576
+            ],
+            [
+              101.712,
+              3.1576
+            ],
+            [
+              101.712,
+              3.1582
+            ],
+            [
+              101.7112,
+              3.1582
+            ],
+            [
+              101.7112,
+              3.1576
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "KLCC Property Holdings Berhad Annual Report"
+  },
+  {
+    "name": "Zifeng Tower",
+    "location": "Nanjing, China",
+    "floors": 89,
+    "total_area_sqm": 137529,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              118.7776,
+              32.062
+            ],
+            [
+              118.7784,
+              32.062
+            ],
+            [
+              118.7784,
+              32.0627
+            ],
+            [
+              118.7776,
+              32.0627
+            ],
+            [
+              118.7776,
+              32.062
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "SOM Architecture Portfolio"
+  },
+  {
+    "name": "Empire State Building",
+    "location": "New York City, USA",
+    "floors": 102,
+    "total_area_sqm": 208879,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.9862,
+              40.7481
+            ],
+            [
+              -73.9852,
+              40.7481
+            ],
+            [
+              -73.9852,
+              40.7488
+            ],
+            [
+              -73.9862,
+              40.7488
+            ],
+            [
+              -73.9862,
+              40.7481
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Empire State Realty Trust SEC Form 10-K"
+  },
+  {
+    "name": "KK100",
+    "location": "Shenzhen, China",
+    "floors": 100,
+    "total_area_sqm": 210000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              114.1042,
+              22.5463
+            ],
+            [
+              114.105,
+              22.5463
+            ],
+            [
+              114.105,
+              22.547
+            ],
+            [
+              114.1042,
+              22.547
+            ],
+            [
+              114.1042,
+              22.5463
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "TFP Farrells Architectural Case Studies"
+  },
+  {
+    "name": "Guangzhou International Finance Center",
+    "location": "Guangzhou, China",
+    "floors": 103,
+    "total_area_sqm": 285000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              113.3168,
+              23.1195
+            ],
+            [
+              113.3176,
+              23.1195
+            ],
+            [
+              113.3176,
+              23.1202
+            ],
+            [
+              113.3168,
+              23.1202
+            ],
+            [
+              113.3168,
+              23.1195
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "WilkinsonEyre Engineering Records"
+  },
+  {
+    "name": "432 Park Avenue",
+    "location": "New York City, USA",
+    "floors": 85,
+    "total_area_sqm": 38335,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.9722,
+              40.7615
+            ],
+            [
+              -73.9715,
+              40.7615
+            ],
+            [
+              -73.9715,
+              40.762
+            ],
+            [
+              -73.9722,
+              40.762
+            ],
+            [
+              -73.9722,
+              40.7615
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Rafael Viñoly Architects Project Spec"
+  },
+  {
+    "name": "The Shard",
+    "location": "London, United Kingdom",
+    "floors": 72,
+    "total_area_sqm": 127301,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.0868,
+              51.5042
+            ],
+            [
+              -0.0858,
+              51.5042
+            ],
+            [
+              -0.0858,
+              51.5048
+            ],
+            [
+              -0.0868,
+              51.5048
+            ],
+            [
+              -0.0868,
+              51.5042
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Renzo Piano Building Workshop Blueprint Archives"
+  },
+  {
+    "name": "Jin Mao Tower",
+    "location": "Shanghai, China",
+    "floors": 88,
+    "total_area_sqm": 290000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.5002,
+              31.2351
+            ],
+            [
+              121.501,
+              31.2351
+            ],
+            [
+              121.501,
+              31.2358
+            ],
+            [
+              121.5002,
+              31.2358
+            ],
+            [
+              121.5002,
+              31.2351
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "SOM Digital Engineering Archive"
+  },
+  {
+    "name": "Princess Tower",
+    "location": "Dubai, United Arab Emirates",
+    "floors": 101,
+    "total_area_sqm": 171175,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              55.1404,
+              25.0894
+            ],
+            [
+              55.1412,
+              25.0894
+            ],
+            [
+              55.1412,
+              25.0901
+            ],
+            [
+              55.1404,
+              25.0901
+            ],
+            [
+              55.1404,
+              25.0894
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Tameer Holding Investment Specifications"
+  },
+  {
+    "name": "Al Hamra Tower",
+    "location": "Kuwait City, Kuwait",
+    "floors": 80,
+    "total_area_sqm": 195000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              47.9926,
+              29.3787
+            ],
+            [
+              47.9934,
+              29.3787
+            ],
+            [
+              47.9934,
+              29.3794
+            ],
+            [
+              47.9926,
+              29.3794
+            ],
+            [
+              47.9926,
+              29.3787
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Al Hamra Real Estate Co. Database"
+  },
+  {
+    "name": "John Hancock Center",
+    "location": "Chicago, USA",
+    "floors": 100,
+    "total_area_sqm": 260128,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -87.6237,
+              41.8985
+            ],
+            [
+              -87.6228,
+              41.8985
+            ],
+            [
+              -87.6228,
+              41.8991
+            ],
+            [
+              -87.6237,
+              41.8991
+            ],
+            [
+              -87.6237,
+              41.8985
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Hearst Real Estate Property Index"
+  },
+  {
+    "name": "CITIC Plaza",
+    "location": "Guangzhou, China",
+    "floors": 80,
+    "total_area_sqm": 205130,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              113.3215,
+              23.1418
+            ],
+            [
+              113.3223,
+              23.1418
+            ],
+            [
+              113.3223,
+              23.1425
+            ],
+            [
+              113.3215,
+              23.1425
+            ],
+            [
+              113.3215,
+              23.1418
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "DLN Architects & Engineers Project List"
+  },
+  {
+    "name": "Shun Hing Square",
+    "location": "Shenzhen, China",
+    "floors": 69,
+    "total_area_sqm": 144200,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              114.1048,
+              22.5445
+            ],
+            [
+              114.1056,
+              22.5445
+            ],
+            [
+              114.1056,
+              22.5452
+            ],
+            [
+              114.1048,
+              22.5452
+            ],
+            [
+              114.1048,
+              22.5445
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "K_Y Chank Design Associates Index"
+  },
+  {
+    "name": "Commerzbank Tower",
+    "location": "Frankfurt, Germany",
+    "floors": 56,
+    "total_area_sqm": 109200,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              8.6738,
+              50.1108
+            ],
+            [
+              8.6746,
+              50.1108
+            ],
+            [
+              8.6746,
+              50.1114
+            ],
+            [
+              8.6738,
+              50.1114
+            ],
+            [
+              8.6738,
+              50.1108
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Foster + Partners Project Sheet"
+  },
+  {
+    "name": "Bank of China Tower",
+    "location": "Hong Kong",
+    "floors": 72,
+    "total_area_sqm": 135000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              114.1611,
+              22.2793
+            ],
+            [
+              114.1619,
+              22.2793
+            ],
+            [
+              114.1619,
+              22.28
+            ],
+            [
+              114.1611,
+              22.28
+            ],
+            [
+              114.1611,
+              22.2793
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "I.M. Pei & Partners Architectural Archives"
+  },
+  {
+    "name": "Gran Torre Santiago",
+    "location": "Santiago, Chile",
+    "floors": 62,
+    "total_area_sqm": 107000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.6065,
+              -33.4187
+            ],
+            [
+              -70.6057,
+              -33.4187
+            ],
+            [
+              -70.6057,
+              -33.4181
+            ],
+            [
+              -70.6065,
+              -33.4181
+            ],
+            [
+              -70.6065,
+              -33.4187
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Cencosud S.A. Corporate Disclosures"
+  },
+  {
+    "name": "Chrysler Building",
+    "location": "New York City, USA",
+    "floors": 77,
+    "total_area_sqm": 111000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.9759,
+              40.7513
+            ],
+            [
+              -73.975,
+              40.7513
+            ],
+            [
+              -73.975,
+              40.752
+            ],
+            [
+              -73.9759,
+              40.752
+            ],
+            [
+              -73.9759,
+              40.7513
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "NYC Landmark Preservation Commission Designation Report"
+  },
+  {
+    "name": "US Bank Tower",
+    "location": "Los Angeles, USA",
+    "floors": 73,
+    "total_area_sqm": 133203,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.2545,
+              34.051
+            ],
+            [
+              -118.2536,
+              34.051
+            ],
+            [
+              -118.2536,
+              34.0517
+            ],
+            [
+              -118.2545,
+              34.0517
+            ],
+            [
+              -118.2545,
+              34.051
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "OUE Limited Corporate Real Estate Profile"
+  },
+  {
+    "name": "The Gherkin (30 St Mary Axe)",
+    "location": "London, United Kingdom",
+    "floors": 41,
+    "total_area_sqm": 47950,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.0807,
+              51.5145
+            ],
+            [
+              -0.0799,
+              51.5145
+            ],
+            [
+              -0.0799,
+              51.5151
+            ],
+            [
+              -0.0799,
+              51.5151
+            ],
+            [
+              -0.0807,
+              51.5151
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Foster + Partners Built Works Index"
+  },
+  {
+    "name": "Torre de Cristal",
+    "location": "Madrid, Spain",
+    "floors": 52,
+    "total_area_sqm": 120800,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -3.6879,
+              40.4781
+            ],
+            [
+              -3.6871,
+              40.4781
+            ],
+            [
+              -3.6871,
+              40.4788
+            ],
+            [
+              -3.6879,
+              40.4788
+            ],
+            [
+              -3.6879,
+              40.4781
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Mutua Madrileña Commercial Real Estate Profile"
+  },
+  {
+    "name": "Q1 Tower",
+    "location": "Gold Coast, Australia",
+    "floors": 78,
+    "total_area_sqm": 107520,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              153.4293,
+              -28.0024
+            ],
+            [
+              153.4301,
+              -28.0024
+            ],
+            [
+              153.4301,
+              -28.0017
+            ],
+            [
+              153.4293,
+              -28.0017
+            ],
+            [
+              153.4293,
+              -28.0024
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Sunland Group Technical Architecture Data"
+  },
+  {
+    "name": "Eureka Tower",
+    "location": "Melbourne, Australia",
+    "floors": 91,
+    "total_area_sqm": 115000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              144.9642,
+              -37.8214
+            ],
+            [
+              144.965,
+              -37.8214
+            ],
+            [
+              144.965,
+              -37.8207
+            ],
+            [
+              144.9642,
+              -37.8207
+            ],
+            [
+              144.9642,
+              -37.8214
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Fender Katsalidis Architects Property Data"
+  },
+  {
+    "name": "Yokohama Landmark Tower",
+    "location": "Yokohama, Japan",
+    "floors": 70,
+    "total_area_sqm": 392885,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              139.6314,
+              35.455
+            ],
+            [
+              139.6325,
+              35.455
+            ],
+            [
+              139.6325,
+              35.4558
+            ],
+            [
+              139.6314,
+              35.4558
+            ],
+            [
+              139.6314,
+              35.455
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Mitsubishi Estate Co. Building Portfolio"
+  },
+  {
+    "name": "Abeno Harukas",
+    "location": "Osaka, Japan",
+    "floors": 60,
+    "total_area_sqm": 212900,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              135.5134,
+              34.6453
+            ],
+            [
+              135.5142,
+              34.6453
+            ],
+            [
+              135.5142,
+              34.646
+            ],
+            [
+              135.5134,
+              34.646
+            ],
+            [
+              135.5134,
+              34.6453
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Kintetsu Railway Co. Infrastructure Portfolio"
+  },
+  {
+    "name": "Bitexco Financial Tower",
+    "location": "Ho Chi Minh City, Vietnam",
+    "floors": 68,
+    "total_area_sqm": 100000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              106.704,
+              10.7716
+            ],
+            [
+              106.7048,
+              10.7716
+            ],
+            [
+              106.7048,
+              10.7723
+            ],
+            [
+              106.704,
+              10.7723
+            ],
+            [
+              106.704,
+              10.7716
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Bitexco Group Property Registry"
+  },
+  {
+    "name": "One Canada Square",
+    "location": "London, United Kingdom",
+    "floors": 50,
+    "total_area_sqm": 111484,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.0191,
+              51.5048
+            ],
+            [
+              -0.0183,
+              51.5048
+            ],
+            [
+              -0.0183,
+              51.5054
+            ],
+            [
+              -0.0191,
+              51.5054
+            ],
+            [
+              -0.0191,
+              51.5048
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Canary Wharf Group Commercial Database"
+  },
+  {
+    "name": "Post Tower",
+    "location": "Bonn, Germany",
+    "floors": 41,
+    "total_area_sqm": 122200,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              7.1274,
+              50.7142
+            ],
+            [
+              7.1282,
+              50.7142
+            ],
+            [
+              7.1282,
+              50.7148
+            ],
+            [
+              7.1274,
+              50.7148
+            ],
+            [
+              7.1274,
+              50.7142
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Deutsche Post DHL Group Corporate Headquarters Specs"
+  },
+  {
+    "name": "Mori Tower (Roppongi Hills)",
+    "location": "Tokyo, Japan",
+    "floors": 54,
+    "total_area_sqm": 379408,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              139.7287,
+              34.6611
+            ],
+            [
+              139.7298,
+              34.6611
+            ],
+            [
+              139.7298,
+              34.662
+            ],
+            [
+              139.7287,
+              34.662
+            ],
+            [
+              139.7287,
+              34.6611
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Mori Building Co. Spatial Records"
+  },
+  {
+    "name": "Torre Isozaki (Allianz Tower)",
+    "location": "Milan, Italy",
+    "floors": 50,
+    "total_area_sqm": 130000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.1558,
+              45.478
+            ],
+            [
+              9.1566,
+              45.478
+            ],
+            [
+              9.1566,
+              45.4786
+            ],
+            [
+              9.1558,
+              45.4786
+            ],
+            [
+              9.1558,
+              45.478
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "CityLife Milan Design Framework"
+  },
+  {
+    "name": "Federation Tower (Vostok)",
+    "location": "Moscow, Russia",
+    "floors": 95,
+    "total_area_sqm": 443000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              37.5369,
+              55.7495
+            ],
+            [
+              37.5378,
+              55.7495
+            ],
+            [
+              37.5378,
+              55.7502
+            ],
+            [
+              37.5369,
+              55.7502
+            ],
+            [
+              37.5369,
+              55.7495
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Aeon Corporation Real Estate Database"
+  },
+  {
+    "name": "Mode Gakuen Cocoon Tower",
+    "location": "Tokyo, Japan",
+    "floors": 50,
+    "total_area_sqm": 80865,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              139.6963,
+              35.6915
+            ],
+            [
+              139.697,
+              35.6915
+            ],
+            [
+              139.697,
+              35.6921
+            ],
+            [
+              139.6963,
+              35.6921
+            ],
+            [
+              139.6963,
+              35.6915
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Tange Associates Building Data"
+  },
+  {
+    "name": "Cayan Tower",
+    "location": "Dubai, United Arab Emirates",
+    "floors": 75,
+    "total_area_sqm": 111000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              55.1444,
+              25.0867
+            ],
+            [
+              55.1451,
+              25.0867
+            ],
+            [
+              55.1451,
+              25.0873
+            ],
+            [
+              55.1444,
+              25.0873
+            ],
+            [
+              55.1444,
+              25.0867
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "SOM Digital Engineering Archive / Cayan Group"
+  },
+  {
+    "name": "Turning Torso",
+    "location": "Malmö, Sweden",
+    "floors": 54,
+    "total_area_sqm": 27500,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              12.9774,
+              55.6131
+            ],
+            [
+              12.9782,
+              55.6131
+            ],
+            [
+              12.9782,
+              55.6137
+            ],
+            [
+              12.9774,
+              55.6137
+            ],
+            [
+              12.9774,
+              55.6131
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Santiago Calatrava Architectural Studio Portfolio"
+  },
+  {
+    "name": "Hearst Tower",
+    "location": "New York City, USA",
+    "floors": 46,
+    "total_area_sqm": 80000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.9841,
+              40.7664
+            ],
+            [
+              -73.9833,
+              40.7664
+            ],
+            [
+              -73.9833,
+              40.767
+            ],
+            [
+              -73.9841,
+              40.767
+            ],
+            [
+              -73.9841,
+              40.7664
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Foster + Partners Project Sheet"
+  },
+  {
+    "name": "Merdeka 118",
+    "location": "Kuala Lumpur, Malaysia",
+    "floors": 118,
+    "total_area_sqm": 278700,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Merdeka 118"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              101.6998,
+              3.1416
+            ],
+            [
+              101.7002,
+              3.1416
+            ],
+            [
+              101.7003,
+              3.1418
+            ],
+            [
+              101.7002,
+              3.142
+            ],
+            [
+              101.6998,
+              3.142
+            ],
+            [
+              101.6997,
+              3.1418
+            ],
+            [
+              101.6998,
+              3.1416
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Ping An Finance Center",
+    "location": "Shenzhen, China",
+    "floors": 115,
+    "total_area_sqm": 390000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Ping An Finance Center"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              114.0538,
+              22.5328
+            ],
+            [
+              114.0542,
+              22.5328
+            ],
+            [
+              114.0543,
+              22.533
+            ],
+            [
+              114.0542,
+              22.5332
+            ],
+            [
+              114.0538,
+              22.5332
+            ],
+            [
+              114.0537,
+              22.533
+            ],
+            [
+              114.0538,
+              22.5328
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Changsha IFS Tower T1",
+    "location": "Changsha, China",
+    "floors": 94,
+    "total_area_sqm": 450000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Changsha IFS Tower T1"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              112.9748,
+              28.1918
+            ],
+            [
+              112.9752,
+              28.1918
+            ],
+            [
+              112.9753,
+              28.192
+            ],
+            [
+              112.9752,
+              28.1922
+            ],
+            [
+              112.9748,
+              28.1922
+            ],
+            [
+              112.9747,
+              28.192
+            ],
+            [
+              112.9748,
+              28.1918
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Petronas Tower 1",
+    "location": "Kuala Lumpur, Malaysia",
+    "floors": 88,
+    "total_area_sqm": 213000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Petronas Tower 1"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              101.7116,
+              3.1576
+            ],
+            [
+              101.712,
+              3.1576
+            ],
+            [
+              101.7121,
+              3.1578
+            ],
+            [
+              101.712,
+              3.158
+            ],
+            [
+              101.7116,
+              3.158
+            ],
+            [
+              101.7115,
+              3.1578
+            ],
+            [
+              101.7116,
+              3.1576
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Petronas Tower 2",
+    "location": "Kuala Lumpur, Malaysia",
+    "floors": 88,
+    "total_area_sqm": 213000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Petronas Tower 2"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              101.712,
+              3.1573
+            ],
+            [
+              101.7124,
+              3.1573
+            ],
+            [
+              101.7125,
+              3.1575
+            ],
+            [
+              101.7124,
+              3.1577
+            ],
+            [
+              101.712,
+              3.1577
+            ],
+            [
+              101.7119,
+              3.1575
+            ],
+            [
+              101.712,
+              3.1573
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Burj Al Arab",
+    "location": "Dubai, UAE",
+    "floors": 56,
+    "total_area_sqm": 110000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Burj Al Arab"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              55.1851,
+              25.1411
+            ],
+            [
+              55.1855,
+              25.1411
+            ],
+            [
+              55.1856,
+              25.1413
+            ],
+            [
+              55.1855,
+              25.1415
+            ],
+            [
+              55.1851,
+              25.1415
+            ],
+            [
+              55.185,
+              25.1413
+            ],
+            [
+              55.1851,
+              25.1411
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "30 St Mary Axe (The Gherkin)",
+    "location": "London, UK",
+    "floors": 41,
+    "total_area_sqm": 60000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "30 St Mary Axe"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.0805,
+              51.5143
+            ],
+            [
+              -0.0801,
+              51.5143
+            ],
+            [
+              -0.08,
+              51.5145
+            ],
+            [
+              -0.0801,
+              51.5147
+            ],
+            [
+              -0.0805,
+              51.5147
+            ],
+            [
+              -0.0806,
+              51.5145
+            ],
+            [
+              -0.0805,
+              51.5143
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Q1 Building",
+    "location": "Gold Coast, Australia",
+    "floors": 78,
+    "total_area_sqm": 150000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Q1 Building"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              153.4308,
+              -27.9932
+            ],
+            [
+              153.4312,
+              -27.9932
+            ],
+            [
+              153.4313,
+              -27.993
+            ],
+            [
+              153.4312,
+              -27.9928
+            ],
+            [
+              153.4308,
+              -27.9928
+            ],
+            [
+              153.4307,
+              -27.993
+            ],
+            [
+              153.4308,
+              -27.9932
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Salesforce Tower",
+    "location": "San Francisco, USA",
+    "floors": 61,
+    "total_area_sqm": 130000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Salesforce Tower"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -122.3974,
+              37.7895
+            ],
+            [
+              -122.397,
+              37.7895
+            ],
+            [
+              -122.3969,
+              37.7897
+            ],
+            [
+              -122.397,
+              37.7899
+            ],
+            [
+              -122.3974,
+              37.7899
+            ],
+            [
+              -122.3975,
+              37.7897
+            ],
+            [
+              -122.3974,
+              37.7895
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Wilshire Grand Center",
+    "location": "Los Angeles, USA",
+    "floors": 73,
+    "total_area_sqm": 280000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Wilshire Grand Center"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.2622,
+              34.0498
+            ],
+            [
+              -118.2618,
+              34.0498
+            ],
+            [
+              -118.2617,
+              34.05
+            ],
+            [
+              -118.2618,
+              34.0502
+            ],
+            [
+              -118.2622,
+              34.0502
+            ],
+            [
+              -118.2623,
+              34.05
+            ],
+            [
+              -118.2622,
+              34.0498
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Bank of America Tower",
+    "location": "New York, USA",
+    "floors": 55,
+    "total_area_sqm": 190000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Bank of America Tower"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.9847,
+              40.7554
+            ],
+            [
+              -73.9843,
+              40.7554
+            ],
+            [
+              -73.9842,
+              40.7556
+            ],
+            [
+              -73.9843,
+              40.7558
+            ],
+            [
+              -73.9847,
+              40.7558
+            ],
+            [
+              -73.9848,
+              40.7556
+            ],
+            [
+              -73.9847,
+              40.7554
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Aon Center",
+    "location": "Chicago, USA",
+    "floors": 83,
+    "total_area_sqm": 210000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Aon Center"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -87.6214,
+              41.8851
+            ],
+            [
+              -87.621,
+              41.8851
+            ],
+            [
+              -87.6209,
+              41.8853
+            ],
+            [
+              -87.621,
+              41.8855
+            ],
+            [
+              -87.6214,
+              41.8855
+            ],
+            [
+              -87.6215,
+              41.8853
+            ],
+            [
+              -87.6214,
+              41.8851
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Trump International Hotel and Tower",
+    "location": "Chicago, USA",
+    "floors": 98,
+    "total_area_sqm": 260000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Trump International Hotel and Tower"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -87.6269,
+              41.8886
+            ],
+            [
+              -87.6265,
+              41.8886
+            ],
+            [
+              -87.6264,
+              41.8888
+            ],
+            [
+              -87.6265,
+              41.889
+            ],
+            [
+              -87.6269,
+              41.889
+            ],
+            [
+              -87.627,
+              41.8888
+            ],
+            [
+              -87.6269,
+              41.8886
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Marina Bay Sands",
+    "location": "Singapore",
+    "floors": 55,
+    "total_area_sqm": 390000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Marina Bay Sands"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8605,
+              1.2832
+            ],
+            [
+              103.8609,
+              1.2832
+            ],
+            [
+              103.861,
+              1.2834
+            ],
+            [
+              103.8609,
+              1.2836
+            ],
+            [
+              103.8605,
+              1.2836
+            ],
+            [
+              103.8604,
+              1.2834
+            ],
+            [
+              103.8605,
+              1.2832
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Marina 101",
+    "location": "Dubai, UAE",
+    "floors": 101,
+    "total_area_sqm": 280000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Marina 101"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              55.1408,
+              25.0778
+            ],
+            [
+              55.1412,
+              25.0778
+            ],
+            [
+              55.1413,
+              25.078
+            ],
+            [
+              55.1412,
+              25.0782
+            ],
+            [
+              55.1408,
+              25.0782
+            ],
+            [
+              55.1407,
+              25.078
+            ],
+            [
+              55.1408,
+              25.0778
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "23 Marina",
+    "location": "Dubai, UAE",
+    "floors": 88,
+    "total_area_sqm": 200000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "23 Marina"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              55.1428,
+              25.0758
+            ],
+            [
+              55.1432,
+              25.0758
+            ],
+            [
+              55.1433,
+              25.076
+            ],
+            [
+              55.1432,
+              25.0762
+            ],
+            [
+              55.1428,
+              25.0762
+            ],
+            [
+              55.1427,
+              25.076
+            ],
+            [
+              55.1428,
+              25.0758
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Elite Residence",
+    "location": "Dubai, UAE",
+    "floors": 87,
+    "total_area_sqm": 190000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Elite Residence"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              55.1438,
+              25.0808
+            ],
+            [
+              55.1442,
+              25.0808
+            ],
+            [
+              55.1443,
+              25.081
+            ],
+            [
+              55.1442,
+              25.0812
+            ],
+            [
+              55.1438,
+              25.0812
+            ],
+            [
+              55.1437,
+              25.081
+            ],
+            [
+              55.1438,
+              25.0808
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Almas Tower",
+    "location": "Dubai, UAE",
+    "floors": 68,
+    "total_area_sqm": 160000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Almas Tower"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              55.1408,
+              25.0678
+            ],
+            [
+              55.1412,
+              25.0678
+            ],
+            [
+              55.1413,
+              25.068
+            ],
+            [
+              55.1412,
+              25.0682
+            ],
+            [
+              55.1408,
+              25.0682
+            ],
+            [
+              55.1407,
+              25.068
+            ],
+            [
+              55.1408,
+              25.0678
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Index Tower",
+    "location": "Dubai, UAE",
+    "floors": 80,
+    "total_area_sqm": 170000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Index Tower"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              55.2758,
+              25.1978
+            ],
+            [
+              55.2762,
+              25.1978
+            ],
+            [
+              55.2763,
+              25.198
+            ],
+            [
+              55.2762,
+              25.1982
+            ],
+            [
+              55.2758,
+              25.1982
+            ],
+            [
+              55.2757,
+              25.198
+            ],
+            [
+              55.2758,
+              25.1978
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Rose Rayhaan by Rotana",
+    "location": "Dubai, UAE",
+    "floors": 72,
+    "total_area_sqm": 130000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Rose Rayhaan by Rotana"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              55.1458,
+              25.0818
+            ],
+            [
+              55.1462,
+              25.0818
+            ],
+            [
+              55.1463,
+              25.082
+            ],
+            [
+              55.1462,
+              25.0822
+            ],
+            [
+              55.1458,
+              25.0822
+            ],
+            [
+              55.1457,
+              25.082
+            ],
+            [
+              55.1458,
+              25.0818
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "JW Marriott Marquis Dubai Tower 1",
+    "location": "Dubai, UAE",
+    "floors": 72,
+    "total_area_sqm": 200000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "JW Marriott Marquis Dubai Tower 1"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              55.2568,
+              25.1858
+            ],
+            [
+              55.2572,
+              25.1858
+            ],
+            [
+              55.2573,
+              25.186
+            ],
+            [
+              55.2572,
+              25.1862
+            ],
+            [
+              55.2568,
+              25.1862
+            ],
+            [
+              55.2567,
+              25.186
+            ],
+            [
+              55.2568,
+              25.1858
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "JW Marriott Marquis Dubai Tower 2",
+    "location": "Dubai, UAE",
+    "floors": 72,
+    "total_area_sqm": 200000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "JW Marriott Marquis Dubai Tower 2"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              55.2573,
+              25.1863
+            ],
+            [
+              55.2577,
+              25.1863
+            ],
+            [
+              55.2578,
+              25.1865
+            ],
+            [
+              55.2577,
+              25.1867
+            ],
+            [
+              55.2573,
+              25.1867
+            ],
+            [
+              55.2572,
+              25.1865
+            ],
+            [
+              55.2573,
+              25.1863
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Emirates Office Tower",
+    "location": "Dubai, UAE",
+    "floors": 54,
+    "total_area_sqm": 160000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Emirates Office Tower"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              55.2798,
+              25.2178
+            ],
+            [
+              55.2802,
+              25.2178
+            ],
+            [
+              55.2803,
+              25.218
+            ],
+            [
+              55.2802,
+              25.2182
+            ],
+            [
+              55.2798,
+              25.2182
+            ],
+            [
+              55.2797,
+              25.218
+            ],
+            [
+              55.2798,
+              25.2178
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Jumeirah Emirates Towers Hotel",
+    "location": "Dubai, UAE",
+    "floors": 56,
+    "total_area_sqm": 150000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Jumeirah Emirates Towers Hotel"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              55.2808,
+              25.2173
+            ],
+            [
+              55.2812,
+              25.2173
+            ],
+            [
+              55.2813,
+              25.2175
+            ],
+            [
+              55.2812,
+              25.2177
+            ],
+            [
+              55.2808,
+              25.2177
+            ],
+            [
+              55.2807,
+              25.2175
+            ],
+            [
+              55.2808,
+              25.2173
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "The Address Downtown",
+    "location": "Dubai, UAE",
+    "floors": 63,
+    "total_area_sqm": 140000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "The Address Downtown"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              55.2748,
+              25.1948
+            ],
+            [
+              55.2752,
+              25.1948
+            ],
+            [
+              55.2753,
+              25.195
+            ],
+            [
+              55.2752,
+              25.1952
+            ],
+            [
+              55.2748,
+              25.1952
+            ],
+            [
+              55.2747,
+              25.195
+            ],
+            [
+              55.2748,
+              25.1948
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Haeundae Doosan We've the Zenith",
+    "location": "Busan, South Korea",
+    "floors": 80,
+    "total_area_sqm": 250000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Haeundae Doosan We've the Zenith"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              129.1648,
+              35.1608
+            ],
+            [
+              129.1652,
+              35.1608
+            ],
+            [
+              129.1653,
+              35.161
+            ],
+            [
+              129.1652,
+              35.1612
+            ],
+            [
+              129.1648,
+              35.1612
+            ],
+            [
+              129.1647,
+              35.161
+            ],
+            [
+              129.1648,
+              35.1608
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  },
+  {
+    "name": "Ryugyong Hotel",
+    "location": "Pyongyang, North Korea",
+    "floors": 105,
+    "total_area_sqm": 360000,
+    "geojson": {
+      "type": "Feature",
+      "properties": {
+        "name": "Ryugyong Hotel"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              125.7378,
+              39.0178
+            ],
+            [
+              125.7382,
+              39.0178
+            ],
+            [
+              125.7383,
+              39.018
+            ],
+            [
+              125.7382,
+              39.0182
+            ],
+            [
+              125.7378,
+              39.0182
+            ],
+            [
+              125.7377,
+              39.018
+            ],
+            [
+              125.7378,
+              39.0178
+            ]
+          ]
+        ]
+      }
+    },
+    "citation": "Council on Tall Buildings and Urban Habitat (CTBUH)"
+  }
+]

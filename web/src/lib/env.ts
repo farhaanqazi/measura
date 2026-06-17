@@ -37,6 +37,14 @@ export const env = createEnv({
       .url()
       .default("https://api.open-meteo.com"),
     SUPABASE_SERVICE_ROLE_KEY: z.string().optional(),
+    /**
+     * UK EPC Open Data register (https://epc.opendatacommunities.org). Free key.
+     * Used for ground-truth calibration of efficiency_v2 and (future) live
+     * construction-year / floor-area lookups. UK-only; both optional — absence
+     * just disables EPC-backed features.
+     */
+    EPC_EMAIL: z.string().email().optional(),
+    EPC_API_KEY: z.string().optional(),
   },
   client: {
     NEXT_PUBLIC_APP_NAME: z.string().default("Measura"),
@@ -49,6 +57,8 @@ export const env = createEnv({
     OVERPASS_BASE_URL: process.env.OVERPASS_BASE_URL,
     OPEN_METEO_BASE_URL: process.env.OPEN_METEO_BASE_URL,
     SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
+    EPC_EMAIL: process.env.EPC_EMAIL,
+    EPC_API_KEY: process.env.EPC_API_KEY,
     NEXT_PUBLIC_APP_NAME: process.env.NEXT_PUBLIC_APP_NAME,
     NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
@@ -58,3 +68,5 @@ export const env = createEnv({
 
 export const isSupabaseConfigured = () =>
   Boolean(env.NEXT_PUBLIC_SUPABASE_URL && env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+
+export const isEpcConfigured = () => Boolean(env.EPC_EMAIL && env.EPC_API_KEY);

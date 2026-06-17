@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { CURRENT_FACTOR_TABLE_VERSION } from "@/lib/geo/efficiency-factors";
 
 export const runtime = "edge";
 
@@ -27,7 +28,7 @@ export async function GET(
   const mockRecord = {
     id,
     pipelineVersion: "1.0.0",
-    factorTableVersion: "efficiency_v1_2026Q2",
+    factorTableVersion: CURRENT_FACTOR_TABLE_VERSION,
     inputFingerprint: "hash_of_input_geometry",
     footprint_m2: {
       value: 412.5,
